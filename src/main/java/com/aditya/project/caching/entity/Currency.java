@@ -3,8 +3,8 @@ package com.aditya.project.caching.entity;
 import lombok.Data;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.cache.annotation.Cacheable;
 
-import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,8 +15,8 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = "currencies")
-@Cacheable
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Cacheable(value = "currencies", key = "#id")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Currency {
 
     @Id
