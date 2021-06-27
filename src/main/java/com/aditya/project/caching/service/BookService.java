@@ -23,6 +23,8 @@ public class BookService {
         if (book.isEmpty()) {
             throw new NullPointerException("Book not found with id : " + id);
         }
+        // To see the cache demo in console
+        book = repository.findById(id);
         return mapper.map(book.get());
     }
 }

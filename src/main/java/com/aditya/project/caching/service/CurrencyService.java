@@ -23,6 +23,8 @@ public class CurrencyService {
         if (currency.isEmpty()) {
             throw new NullPointerException("Currency not found with id : " + id);
         }
+        // To see the cache demo in console
+        currency = repository.findById(id);
         return mapper.map(currency.get());
     }
 }
